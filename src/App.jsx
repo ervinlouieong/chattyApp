@@ -43,7 +43,7 @@ class App extends Component {
   onNewMessage(username, content) {
     // console.log(content);
     this.setState({
-      messages: this.state.messages.concat({id: this.state.messages.length+1, username: username, content:content}),
+      messages: this.state.messages.concat({id: this.state.messages.length+1, username: username || this.state.currentUser.name, content:content}),
     })
   }
   render() {
@@ -54,7 +54,7 @@ class App extends Component {
           <a href="/" className="navbar-brand">Chatty</a>
         </nav>
         <MessageList messages = { this.state.messages } />
-        <ChatBar user = { this.state.currentUser.name }
+        <ChatBar user = { this.state.currentUser }
           onNewMessage = { this.onNewMessage }/>
       </div>
     );
