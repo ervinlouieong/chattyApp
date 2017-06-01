@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 class ChatBar extends Component {
   constructor(props) {
   super(props);
-  this.state = { content: '' };
+  this.state = { username: this.props.user.name,
+                 content: '' };
   this.onNameChange = this.onNameChange.bind(this);
   this.onMessage = this.onMessage.bind(this);
   this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -15,12 +16,13 @@ class ChatBar extends Component {
   }
   onMessage(event){
     this.setState({
+      type: "postMessage",
       content: event.target.value
     });
   }
   handleKeyPress = (event) => {
     if(event.key === 'Enter'){
-      this.props.onNewMessage(this.state.username, this.state.content);
+      this.props.onNewMessage(this.state.type, this.state.username, this.state.content);
       this.setState({content: ''});
     }
   } 

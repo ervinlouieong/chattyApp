@@ -18,22 +18,24 @@ class App extends Component {
   this.onNewMessage = this.onNewMessage.bind(this);
   }
   componentDidMount() {
-    const ws = new WebSocket("ws://localhost:3001");
-    this.socket = ws;
+    console.log("componentDidMount <App />");
+    this.socket = new WebSocket("ws://localhost:3001");
+    this.socket.onopen = (event) =>  {
+      console.log("Connected to server!");
+    };
     this.socket.onmessage = (event) => {
+      console.log(event.data);
       this.setState({
         messages: this.state.messages.concat(JSON.parse(event.data))
       })
-  // code to handle incoming message
-}
-    ws.onopen = function() {
-      console.log("Connected to server!");
-    }
-    console.log("componentDidMount <App />");
+    };
   }
-  onNewMessage(username, content) {
-    let newMessage = {username: username, 
-                      content:content}
+  onNewMessage(type, username, content) {
+    let newMessage = {type: type,
+                      username: username , 
+                      content:content};
+    console.log("NEW MESSAGE",newMessage);
+              
     this.socket.send(JSON.stringify(newMessage));
   }
   render() {
