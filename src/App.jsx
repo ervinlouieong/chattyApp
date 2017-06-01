@@ -36,6 +36,12 @@ class App extends Component {
             messages: this.state.messages.concat(data)
             })
           break;
+        case 'userCountChanged':
+          console.log(data);
+          this.setState({
+            userCount: data.userCount
+          })
+          break;
         default:
           // show an error in the console if the message type is unknown
           throw new Error('Unknown event type ' + data.type);
@@ -62,6 +68,7 @@ class App extends Component {
       <div>
         <nav className="navbar">
           <a href="/" className="navbar-brand">Chatty</a>
+          <span className="userCount">{this.state.userCount} users online</span>
         </nav>
         <MessageList messages = { this.state.messages } />
         <ChatBar user = { this.state.currentUser }
