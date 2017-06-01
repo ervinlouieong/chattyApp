@@ -30,7 +30,7 @@ class ChatBar extends Component {
       <footer className="chatbar">
         <input className="chatbar-username" 
           placeholder="Your Name (Optional)" 
-          defaultValue= { this.props.user ? this.props.user.name : undefined } 
+          defaultValue= { this.props.user.name } 
           onChange= { this.onNameChange } />
         <input className="chatbar-message" 
           placeholder="Type a message and hit ENTER" 
