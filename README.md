@@ -10,10 +10,11 @@ Chatty App allows users to communicate with each other without having to registe
 
 ## Getting Started
 
-1. Access the [chattyApp server](https://github.com/ervinlouieong/chattyAppServer) on this repo. Follow the README on that repo.
-1. Install dependencies using the `npm install` command.
-2. Start the web server using the `npm start` command. The app will be served at <http://localhost:3000/>.
-3. Go to <http://localhost:3000/> in your browser.
+1. Access the [chattyApp Server](https://github.com/ervinlouieong/chattyAppServer) on this repo. Follow the README on that repo.
+2. Make sure to `npm start` the chattyAppServer first before starting this web server.
+3. Install dependencies using the `npm install` command.
+4. Start the web server using the `npm start` command. The app will be served at <http://localhost:3000/>.
+5. Go to <http://localhost:3000/> in your browser.
 
 
 ## Dependencies
