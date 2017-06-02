@@ -16,10 +16,8 @@ class App extends Component {
   this.onNewMessage = this.onNewMessage.bind(this);
   }
   componentDidMount() {
-    console.log("componentDidMount <App />");
     this.socket = new WebSocket("ws://localhost:3001");
     this.socket.onopen = (event) =>  {
-      console.log("Connected to server!");
     };
     this.socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
@@ -37,7 +35,6 @@ class App extends Component {
             })
           break;
         case 'userCountChanged':
-          console.log(data);
           this.setState({
             userCount: data.userCount
           })
@@ -55,15 +52,12 @@ class App extends Component {
       this.setState({ currentUser: { name: username }});
       this.socket.send(JSON.stringify(newMessage));  
     }
-    console.log(newMessage);
     let newMessage = {type: 'postMessage',
                       username: username , 
-                      content: content };
-    console.log("NEW MESSAGE",newMessage);       
+                      content: content };    
     this.socket.send(JSON.stringify(newMessage));
   }
   render() {
-    console.log("Rendering <App/>");
     return (
       <div>
         <nav className="navbar">
